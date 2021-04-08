@@ -17,6 +17,13 @@ Content-Type: application/json
 
 ### Edit a question
 
+Patch  http://127.0.0.1:5000/api/questions
+Content-Type: application/json
+
+{
+    "answered": true
+}
+
 ### Delete a question
 
 DELETE http://127.0.0.1:5000/api/questions
