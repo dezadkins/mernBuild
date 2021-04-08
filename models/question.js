@@ -1,23 +1,30 @@
 const mongoose = require("mongoose");
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const questionSchema = schema({
-  name: {
-    type: String,
-    required: true,
+const questionSchema = Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+    repo: {
+      type: String,
+    },
+    live: {
+      type: String,
+    },
+    answered: {
+      type: Boolean,
+      default: false,
+    },
   },
-  text: {
-    type: String,
-    require: true,
-  },
-  repo: {
-    type: String,
-  },
-  live: {
-    type: String,
-  },
-  answered: {
-    type: Boolean,
-    default: false,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
+
+module.exports = Question = mongoose.model("Question", questionSchema);
