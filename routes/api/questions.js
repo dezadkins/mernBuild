@@ -1,4 +1,5 @@
 const express = require("express");
+const question = require("../../models/question");
 const router = express.Router();
 
 const Question = require("../../models/question");
@@ -25,8 +26,9 @@ router.post("/", (req, res) => {
 
 router.delete("/:question_id", (req, res) => {
   Question.findOneAndDelete(
-    { _id: req.params.question_id },
-    { $set: req.body }
+    { _id: req.params.question_id }
+      .then((question) => res.json({ _id: question._id }))
+      .catch((err) => res.status(404).json(err))
   );
 });
 
